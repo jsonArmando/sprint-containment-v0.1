@@ -1,0 +1,24 @@
+# Política de Capa 1 (C4). Externalizada del código a propósito: cambiar un
+# umbral no debe requerir tocar harness/layer1.py, y un tercero puede leer
+# esta política sin leer Python.
+
+window_seconds: 5
+
+rules:
+  scope_stretch:
+    trigger_class: scope_stretch_attempt
+    min_count: 1
+
+  chain_fetch_then_hop:
+    requires_classes: [fetch, lateral_hop]
+    min_count_each: 1
+
+  replay_outside_retry:
+    same_dst_repeat: true
+    retry_n_equals: 0
+    outcome: allow
+
+  fan_out:
+    same_dst_same_class_min_count: 3
+
+abstain_if_only: [healthcheck]

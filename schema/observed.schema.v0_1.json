@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "observed.schema.v0_1.json",
+  "title": "Observed event (ECS-lite) — schema cerrado, sin campos de Intent",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["ts", "src", "dst", "outcome"],
+  "properties": {
+    "ts": { "type": "number" },
+    "src": { "type": "string" },
+    "dst": { "type": "string" },
+    "asset": { "type": "string" },
+    "tool_id": { "type": "string" },
+    "payload_class": { "type": "string" },
+    "outcome": { "type": "string", "enum": ["allow", "deny"] },
+    "bytes": { "type": "number" },
+    "retry_n": { "type": "number" },
+    "is_healthcheck": { "type": "boolean" },
+    "sg_src": { "type": "string" },
+    "sg_dst": { "type": "string" },
+    "raw_hash": { "type": "string" },
+    "episode_nonce": { "type": "string" },
+    "deny_reason": { "type": "string" }
+  }
+}
